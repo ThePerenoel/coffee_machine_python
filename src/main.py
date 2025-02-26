@@ -1,19 +1,15 @@
+from src.adapters.generate_report_adapter import GenerateReportAdapter
 from src.adapters.send_command_adapter import SendCommandAdapter
-from src.domain.drink_command import DrinkCommand
-from src.domain.drink_type import DrinkType
 from src.adapters.cli_report_printer import CliReportPrinter
 from src.adapters.cli_coffee_machine_provider import CliCoffeeMachineProvider
 from src.adapters.in_memory_command_repository import InMemoryCommandRepository
-from src.domain.client_input import ClientInput
-from src.usecases.send_command_coffee_machine import SendCommandToCoffeeMachine
-from src.usecases.generate_report import GenerateReport
 
 def main():
 
     reportPrinter = CliReportPrinter()
     coffeeMachineProvider = CliCoffeeMachineProvider()
     commandRepository = InMemoryCommandRepository()
-    generateReport = GenerateReport(commandRepository, reportPrinter)
+    generateReport = GenerateReportAdapter(commandRepository, reportPrinter)
     sendCommandToCoffeeMachine = SendCommandAdapter(commandRepository, coffeeMachineProvider)
 
     print("Welcome to your coffee machine. Type the following command to use it :")
@@ -26,16 +22,13 @@ def main():
     print("COFFEE - 0.60€")
     print("CHOCOLATE - 0.50€")
     print("ORANGE_JUICE - 0.60€")
+    print("**********************************************************")
 
     while True:
-        choice = input("What can I do for you? ").strip().upper()
-        
+        choice = input("What can I do for you? > ").strip().upper()
         if choice in {"TEA", "COFFEE", "CHOCOLATE", "ORANGE_JUICE"}:
-            givenMoney = input("How much money do you have? ")
-            sugars = input("How many sugars? ")
-            sendCommandToCoffeeMachine.act(choice, givenMoney, sugars)
+            sendCommandToCoffeeMachine.act(choice)
         elif choice == "REPORT":
-            print("Here is your report:")
             generateReport.act()
         elif choice == "EXIT":
             print("Ok Bye!")

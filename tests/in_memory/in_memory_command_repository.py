@@ -5,14 +5,14 @@ from src.domain.drink_command import DrinkCommand
 
 @dataclass
 class InMemoryCommandRepository(CommandRepository):
-    __database:List[DrinkCommand] = field(default_factory=list)
+    _database:List[DrinkCommand] = field(default_factory=list)
 
     def save(self, drinkCommand):
-        self.__database.append(drinkCommand)
+        self._database.append(drinkCommand)
         return
     
     def getAll(self):
-        return self.__database
+        return self._database
 
     def contains(self, drinkCommand) -> bool:
-        return drinkCommand in self.__database
+        return drinkCommand in self._database

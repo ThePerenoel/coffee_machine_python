@@ -6,7 +6,9 @@ from src.usecases.send_command_coffee_machine import SendCommandToCoffeeMachine
 
 class SendCommandAdapter(SendCommandToCoffeeMachine):
 
-    def act(self, choice: str, givenMoney: str, sugars: str):
+    def act(self, choice: str):
+        givenMoney = input("How much money do you have? ")
+        sugars = input("How many sugars? ")
         drinkType = DrinkType.ORANGE if(choice == "ORANGE_JUICE") else DrinkType[choice]
         drinkCommand = DrinkCommand(drinkType, int(sugars))
         clientInput = ClientInput(drinkCommand, float(givenMoney))
