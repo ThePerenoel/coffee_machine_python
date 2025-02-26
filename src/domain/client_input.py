@@ -12,7 +12,7 @@ class ClientInput:
     _money: float
     
     def validate(self) -> Command:
-        missingMoney = self.drinkCommand.calculateChange(self._money)
+        missingMoney = self.drinkCommand.calculateMissingMoney(self._money)
         if(missingMoney > 0):
             return MessageCommand(f"Cannot make command. {missingMoney} euro missing.")
         return self.drinkCommand

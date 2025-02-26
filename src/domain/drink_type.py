@@ -9,5 +9,6 @@ class DrinkType(Enum):
     def getStringValue(self) -> str:
         return self.value[0]
 
-    def calculateChange(self, givenMoney: float) -> float:
+    def calculateMissingMoney(self, givenMoney: float) -> float:
         return round(self.value[1] - givenMoney, 2)
+    

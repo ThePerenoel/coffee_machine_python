@@ -4,7 +4,7 @@ from src.domain.message_command import MessageCommand
 
 class TestMessageCommand(unittest.TestCase):
 
-    def test(self):
+    def test_translate(self):
         command = MessageCommand("message-content")
         expectedTranslation = "M:message-content"
         translation = command.translate()

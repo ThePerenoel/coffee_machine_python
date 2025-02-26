@@ -19,5 +19,5 @@ class DrinkCommand(Command):
             return "::"
         return f":{str(self._quantity)}:0"
 
-    def calculateChange(self, givenMoney) -> float:
-        return self.type.calculateChange(givenMoney)
+    def calculateMissingMoney(self, givenMoney) -> float:
+        return self.type.calculateMissingMoney(givenMoney)

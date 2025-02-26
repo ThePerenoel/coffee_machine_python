@@ -8,7 +8,7 @@ from tests.in_memory.in_memory_command_repository import InMemoryCommandReposito
 
 class TestClientInput(unittest.TestCase):
 
-    def test1(self):
+    def test_validate_given_too_much_money(self):
         """
         GIVEN DrinkCommand for coffee with one sugar AND 0.6 euros
         THEN ClientInput should validate the command and return it
@@ -19,7 +19,7 @@ class TestClientInput(unittest.TestCase):
         expectedOrder = drinkCommand
         self.assertEqual(order, expectedOrder)
 
-    def test2(self):
+    def test_validate_given_not_enough_money(self):
         """
         GIVEN DrinkCommand for coffee with one sugar AND 0.4 euros
         THEN ClientInput should return a MessageCommand with 0.2 euros missing
@@ -30,7 +30,7 @@ class TestClientInput(unittest.TestCase):
         expectedOrder = MessageCommand("Cannot make command. 0.2 euro missing.")
         self.assertEqual(order, expectedOrder)
 
-    def test1(self):
+    def test_validate_given_too_much_money(self):
         """
         GIVEN DrinkCommand for coffee with two sugars AND 1 euro
         THEN ClientInput should validate the command and return it
