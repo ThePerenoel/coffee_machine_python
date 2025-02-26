@@ -1,12 +1,19 @@
-from dataclasses import dataclass, field
-from typing import List
 from src.providers.coffee_machine_provider import CoffeeMachineProvider
-
-@dataclass
 class InMemoryCoffeeMachineProvider(CoffeeMachineProvider):
 
-    _database:List[str] = field(default_factory=list)
-
     def send(self, command):
-        print(command)
-        self._database.append(command)
+        drinkType = command[0]
+        match drinkType:
+            case "H":
+                print("Here is your chocolate.")
+            case "C":
+                print("Here is your coffee.")
+            case "O":
+                print("Here is your orange juice.")
+            case "T":
+                print("Here is your tea.")
+            case "M":
+                print(command[2:])
+            case _:
+                print("An error occured.")
+

@@ -1,3 +1,4 @@
+from src.adapters.send_command_adapter import SendCommandAdapter
 from src.domain.drink_command import DrinkCommand
 from src.domain.drink_type import DrinkType
 from src.adapters.cli_report_printer import CliReportPrinter
@@ -13,7 +14,7 @@ def main():
     coffeeMachineProvider = InMemoryCoffeeMachineProvider()
     commandRepository = InMemoryCommandRepository()
     generateReport = GenerateReport(commandRepository, reportPrinter)
-    sendCommandToCoffeeMachine = SendCommandToCoffeeMachine(commandRepository, coffeeMachineProvider)
+    sendCommandToCoffeeMachine = SendCommandAdapter(commandRepository, coffeeMachineProvider)
 
     print("Welcome to your coffee machine. Type the following command to use it :")
     print("- Type the name of your drink to order it (exemple: TEA)")
@@ -32,10 +33,7 @@ def main():
         if choice in {"TEA", "COFFEE", "CHOCOLATE", "ORANGE_JUICE"}:
             givenMoney = input("How much money do you have? ")
             sugars = input("How many sugars? ")
-            drinkType = DrinkType.ORANGE if(choice == "ORANGE_JUICE") else DrinkType[choice]
-            drinkCommand = DrinkCommand(drinkType, int(sugars))
-            clientInput = ClientInput(drinkCommand, float(givenMoney))
-            sendCommandToCoffeeMachine.act(clientInput)
+            sendCommandToCoffeeMachine.act(choice, givenMoney, sugars)
         elif choice == "REPORT":
             print("Here is your report:")
             generateReport.act()
