@@ -5,3 +5,6 @@ class DrinkType(Enum):
     TEA = "T", 0.4
     COFFEE="C", 0.6
     ORANGE="O", 0.6
+
+    def getStringValue(self) -> str:
+        return self.value[0]

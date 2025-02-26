@@ -9,10 +9,10 @@ from src.domain.message_command import MessageCommand
 @dataclass(frozen=True)
 class ClientInput:
     drinkCommand: DrinkCommand
-    __money: float
+    _money: float
     
     def validate(self) -> Command:
-        missingMoney = self.drinkCommand.calculateChange(self.__money)
+        missingMoney = self.drinkCommand.calculateChange(self._money)
         if(missingMoney > 0):
             return MessageCommand(f"Cannot make command. {round(missingMoney, 2)} euro missing.")
         return self.drinkCommand

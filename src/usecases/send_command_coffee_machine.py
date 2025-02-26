@@ -10,11 +10,11 @@ from src.domain.message_command import MessageCommand
 
 @dataclass(frozen=True)
 class SendCommandToCoffeeMachine:
-    commandRepository: CommandRepository
-    coffeeMachineProvider: CoffeeMachineProvider
+    _commandRepository: CommandRepository
+    _coffeeMachineProvider: CoffeeMachineProvider
     
     def act(self, clientInput: ClientInput):
         command = clientInput.validate()
         if(type(command) is DrinkCommand):
-            self.commandRepository.save(command)
-        self.coffeeMachineProvider.send(command.translate())
+            self._commandRepository.save(command)
+        self._coffeeMachineProvider.send(command.translate())
