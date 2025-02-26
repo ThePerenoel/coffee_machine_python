@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from functools import reduce
 from typing import List, Type
-from src.domain.command_repository import CommandRepository
+from src.repositories.command_repository import CommandRepository
 from src.domain.drink_type import DrinkType
-from src.domain.report_printer import ReportPrinter
+from src.providers.report_printer import ReportPrinter
 
 @dataclass(frozen=True)
 class GenerateReport:

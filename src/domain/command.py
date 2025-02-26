@@ -8,5 +8,3 @@ class Command(ABC):
     def translate(self) -> str:
         """Translate the command to a string representation"""
         pass
-
-    

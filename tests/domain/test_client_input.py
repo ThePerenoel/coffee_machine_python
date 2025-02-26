@@ -4,7 +4,7 @@ from src.domain.drink_command import DrinkCommand
 from src.domain.message_command import MessageCommand
 from src.usecases.send_command_coffee_machine import SendCommandToCoffeeMachine
 from src.domain.drink_type import DrinkType
-from tests.domain.in_memory_command_repository import InMemoryCommandRepository
+from tests.in_memory.in_memory_command_repository import InMemoryCommandRepository
 
 class TestClientInput(unittest.TestCase):
 

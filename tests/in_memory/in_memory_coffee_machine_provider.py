@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List
-from src.domain.coffee_machine_provider import CoffeeMachineProvider
+from src.providers.coffee_machine_provider import CoffeeMachineProvider
 
 @dataclass
 class InMemoryCoffeeMachineProvider(CoffeeMachineProvider):

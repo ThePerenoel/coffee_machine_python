@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from src.domain.report_printer import ReportPrinter
+from src.providers.report_printer import ReportPrinter
 
 
 @dataclass

@@ -3,8 +3,8 @@ import unittest
 from src.domain.drink_command import DrinkCommand
 from src.domain.drink_type import DrinkType
 from src.usecases.generate_report import GenerateReport
-from tests.domain.in_memory_command_repository import InMemoryCommandRepository
-from tests.domain.in_memory_report_printer import InMemoryReportPrinter
+from tests.in_memory.in_memory_command_repository import InMemoryCommandRepository
+from tests.in_memory.in_memory_report_printer import InMemoryReportPrinter
 
 class TestGenerateReport(unittest.TestCase):
 

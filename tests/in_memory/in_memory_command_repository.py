@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List
-from src.domain.command_repository import CommandRepository
+from src.repositories.command_repository import CommandRepository
 from src.domain.drink_command import DrinkCommand
 
 @dataclass
