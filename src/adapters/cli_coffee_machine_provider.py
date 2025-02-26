@@ -1,5 +1,5 @@
 from src.providers.coffee_machine_provider import CoffeeMachineProvider
-class InMemoryCoffeeMachineProvider(CoffeeMachineProvider):
+class CliCoffeeMachineProvider(CoffeeMachineProvider):
 
     def send(self, command):
         drinkType = command[0]

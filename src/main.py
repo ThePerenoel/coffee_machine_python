@@ -2,7 +2,7 @@ from src.adapters.send_command_adapter import SendCommandAdapter
 from src.domain.drink_command import DrinkCommand
 from src.domain.drink_type import DrinkType
 from src.adapters.cli_report_printer import CliReportPrinter
-from src.adapters.in_memory_coffee_machine_provider import InMemoryCoffeeMachineProvider
+from src.adapters.cli_coffee_machine_provider import CliCoffeeMachineProvider
 from src.adapters.in_memory_command_repository import InMemoryCommandRepository
 from src.domain.client_input import ClientInput
 from src.usecases.send_command_coffee_machine import SendCommandToCoffeeMachine
@@ -11,7 +11,7 @@ from src.usecases.generate_report import GenerateReport
 def main():
 
     reportPrinter = CliReportPrinter()
-    coffeeMachineProvider = InMemoryCoffeeMachineProvider()
+    coffeeMachineProvider = CliCoffeeMachineProvider()
     commandRepository = InMemoryCommandRepository()
     generateReport = GenerateReport(commandRepository, reportPrinter)
     sendCommandToCoffeeMachine = SendCommandAdapter(commandRepository, coffeeMachineProvider)
