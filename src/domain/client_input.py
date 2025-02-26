@@ -14,7 +14,7 @@ class ClientInput:
     def validate(self) -> Command:
         missingMoney = self.drinkCommand.calculateChange(self._money)
         if(missingMoney > 0):
-            return MessageCommand(f"Cannot make command. {round(missingMoney, 2)} euro missing.")
+            return MessageCommand(f"Cannot make command. {missingMoney} euro missing.")
         return self.drinkCommand
         
     def translate(self) -> str:
