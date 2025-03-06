@@ -5,7 +5,7 @@ from src.domain.drink_type import DrinkType
 @dataclass(frozen=True)
 class DrinkCommand(Command):
     type: DrinkType
-    _quantity: int
+    _numberOfSugars: int
     _isExtraHot: bool = field(default=False)
 
     def translate(self) -> str:
@@ -15,9 +15,9 @@ class DrinkCommand(Command):
         return "h" if self._isExtraHot else ""
     
     def _translateSuffix(self) -> str:
-        if(self._quantity == 0):
+        if(self._numberOfSugars == 0):
             return "::"
-        return f":{str(self._quantity)}:0"
+        return f":{str(self._numberOfSugars)}:0"
 
     def calculateMissingMoney(self, givenMoney) -> float:
         return self.type.calculateMissingMoney(givenMoney)

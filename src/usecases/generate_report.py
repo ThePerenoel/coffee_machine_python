@@ -17,4 +17,4 @@ class GenerateReport:
         self._reportPrinter.print(output)
 
     def _formatDrinkReport(self, drinkTypes: List[DrinkType]):
-        return ", ".join(f"{data.name}: {drinkTypes.count(data)}" for data in DrinkType)
+        return ", ".join(f"{type.name}: {drinkTypes.count(type)}" for type in DrinkType)
